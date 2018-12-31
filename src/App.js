@@ -1,13 +1,15 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+// eslint-disable-next-line
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 
+import NavBar from "./components/NavBar/NavBar";
+import RedocDisplay from "./components/Main/RedocDisplay";
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Schema</h1>
+        <NavBar />
+        <RedocDisplay />
       </div>
     );
   }

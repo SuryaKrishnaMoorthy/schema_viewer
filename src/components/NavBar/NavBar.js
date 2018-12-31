@@ -14,9 +14,10 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import SearchBar from "./SearchBar";
-import RedocDisplay from "./Main";
+import listOfApis from "../../models/listOfApi";
+import { changeSchema } from "../../actions";
 
-export default class NavBar extends Component {
+class NavBar extends Component {
   constructor(props) {
     super(props);
 
@@ -31,6 +32,10 @@ export default class NavBar extends Component {
       isOpen: !this.state.isOpen
     });
   }
+
+  handleClick = e => {
+    this.props.changeSchema(e.currentTarget.getAttribute("value"));
+  };
 
   render() {
     return (
@@ -48,24 +53,18 @@ export default class NavBar extends Component {
                 Options
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem
-                  tag="a"
-                  href="https://api.apis.guru/v2/specs/instagram.com/1.0.0/swagger.yaml"
-                >
-                  Instagram
-                </DropdownItem>
-                <DropdownItem
-                  tag="a"
-                  href="https://rebilly.github.io/ReDoc/swagger.yaml"
-                >
-                  PetStore
-                </DropdownItem>
-                <DropdownItem
-                  tag="a"
-                  href="https://api.apis.guru/v2/specs/googleapis.com/calendar/v3/swagger.yaml"
-                >
-                  Google Calendar
-                </DropdownItem>
+                {listOfApis.map((api, i) => (
+                  <DropdownItem
+                    onClick={e => this.handleClick(e)}
+                    tag="a"
+                    name={api.name}
+                    // eslint-disable-next-line
+                    key={i}
+                    value={api.url}
+                  >
+                    {api.name}
+                  </DropdownItem>
+                ))}
               </DropdownMenu>
             </UncontrolledDropdown>
             <SearchBar />
@@ -75,3 +74,16 @@ export default class NavBar extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return state;
+};
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ changeSchema }, dispatch);
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NavBar);

@@ -1,6 +1,8 @@
 import { CHANGE_SCHEMA } from "./types";
 
-export const changeSchema = (schemaUrl, dispatch) => {
+const changeSchema = schemaUrl => {
   const payload = { schemaUrl };
-  dispatch({ type: CHANGE_SCHEMA, payload });
+  return dispatch => dispatch({ type: CHANGE_SCHEMA, payload });
 };
+
+export { changeSchema };

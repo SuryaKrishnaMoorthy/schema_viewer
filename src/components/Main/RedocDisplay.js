@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { RedocStandalone } from "redoc";
+import { connect } from "react-redux";
 
 class RedocDisplay extends Component {
   render() {
     return (
       <RedocStandalone
-        specUrl="https://api.apis.guru/v2/specs/instagram.com/1.0.0/swagger.yaml"
+        specUrl={this.props.schemaUrl}
         options={{
           nativeScrollbars: true,
           theme: { colors: { main: "#dd5522" } }
@@ -15,4 +16,9 @@ class RedocDisplay extends Component {
   }
 }
 
-export default RedocDisplay;
+const mapStateToProps = state => state;
+
+export default connect(
+  mapStateToProps,
+  null
+)(RedocDisplay);
