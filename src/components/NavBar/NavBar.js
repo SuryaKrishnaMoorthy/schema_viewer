@@ -8,7 +8,9 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   Collapse,
-  NavbarToggler
+  NavbarToggler,
+  NavItem,
+  NavLink
 } from "reactstrap";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -67,7 +69,6 @@ class NavBar extends Component {
                 ))}
               </DropdownMenu>
             </UncontrolledDropdown>
-            <SearchBar />
           </Nav>
         </Collapse>
       </Navbar>
