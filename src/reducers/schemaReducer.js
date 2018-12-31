@@ -1,10 +1,10 @@
 import { CHANGE_SCHEMA } from "../actions/types";
 
 const INTIAL_STATE = {
-  schemaUrl: "Instagram"
+  schemaUrl: "https://rebilly.github.io/ReDoc/swagger.yaml"
 };
 
-export default (state = INTIAL_STATE, { type, payload }) => {
+const schemaReducer = (state = INTIAL_STATE, { type, payload }) => {
   switch (type) {
     case CHANGE_SCHEMA:
       return { ...state, ...payload };
@@ -12,3 +12,5 @@ export default (state = INTIAL_STATE, { type, payload }) => {
       return state;
   }
 };
+
+export { schemaReducer };
