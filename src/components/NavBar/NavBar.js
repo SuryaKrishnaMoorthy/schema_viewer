@@ -16,8 +16,8 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import SearchBar from "./SearchBar";
-import listOfApis from "../../models/listOfApi";
-import { changeSchema } from "../../actions";
+import { changeSchema, getAllSchema } from "../../actions";
+import { getAllSchemaRequest, apis } from "../../requests";
 
 class NavBar extends Component {
   constructor(props) {
@@ -39,10 +39,14 @@ class NavBar extends Component {
     this.props.changeSchema(e.currentTarget.getAttribute("value"));
   };
 
+  componentDidMount() {
+    this.props.getAllSchema();
+  }
+
   render() {
     return (
       <Navbar color="light" light expand="md" sticky="top">
-        <NavbarBrand href="/">reactstrap</NavbarBrand>
+        <NavbarBrand href="/">Seattle Children's</NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse style={{ height: "100%" }} isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
@@ -55,18 +59,20 @@ class NavBar extends Component {
                 Options
               </DropdownToggle>
               <DropdownMenu right>
-                {listOfApis.map((api, i) => (
-                  <DropdownItem
-                    onClick={e => this.handleClick(e)}
-                    tag="a"
-                    name={api.name}
-                    // eslint-disable-next-line
+                {this.props.schemas.length
+                  ? this.props.schemas.map((api, i) => (
+                      <DropdownItem
+                        onClick={e => this.handleClick(e)}
+                        tag="a"
+                        name={api.name}
+                        // eslint-disable-next-line
                     key={i}
-                    value={api.url}
-                  >
-                    {api.name}
-                  </DropdownItem>
-                ))}
+                        value={api.url}
+                      >
+                        {api.name}
+                      </DropdownItem>
+                    ))
+                  : []}
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
@@ -76,12 +82,12 @@ class NavBar extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return state;
+const mapStateToProps = ({ schemaUrl, schemas }) => {
+  return { schemaUrl, schemas };
 };
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ changeSchema }, dispatch);
+  return bindActionCreators({ changeSchema, getAllSchema }, dispatch);
 };
 
 export default connect(
