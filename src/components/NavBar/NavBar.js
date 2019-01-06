@@ -17,7 +17,6 @@ import { bindActionCreators } from "redux";
 
 import SearchBar from "./SearchBar";
 import { changeSchema, getAllSchema } from "../../actions";
-import { getAllSchemaRequest, apis } from "../../requests";
 
 class NavBar extends Component {
   constructor(props) {
@@ -60,21 +59,22 @@ class NavBar extends Component {
               </DropdownToggle>
               <DropdownMenu right>
                 {this.props.schemas.length
-                  ? this.props.schemas.map((api, i) => (
+                  ? this.props.schemas.map((schema, i) => (
                       <DropdownItem
                         onClick={e => this.handleClick(e)}
                         tag="a"
-                        name={api.name}
+                        name={schema.name}
                         // eslint-disable-next-line
                     key={i}
-                        value={api.url}
+                        value={schema.url}
                       >
-                        {api.name}
+                        {schema.name}
                       </DropdownItem>
                     ))
                   : []}
               </DropdownMenu>
             </UncontrolledDropdown>
+            <SearchBar />
           </Nav>
         </Collapse>
       </Navbar>
