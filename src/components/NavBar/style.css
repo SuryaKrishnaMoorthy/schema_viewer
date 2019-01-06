@@ -1,0 +1,22 @@
+.navBar {
+  justify-content: space-evenly;
+}
+
+.navBarComponents {
+  margin-top: 0.5%;
+  width: 80%;
+  justify-content: space-around;
+  align-content: center;
+}
+
+.searchBar {
+  width: 100% !important;
+}
+
+.navBarDropdown {
+  background-color: #39809e;
+  height: fit-content;
+  max-width: 30%;
+  min-width: 30%;
+  max-height: 10%;
+}

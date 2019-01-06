@@ -15,8 +15,10 @@ import {
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
+import "./style.css";
 import SearchBar from "./SearchBar";
 import { changeSchema, getAllSchema } from "../../actions";
+const logo = require("../../assets/seattle-childrens-logo-header.png");
 
 class NavBar extends Component {
   constructor(props) {
@@ -24,7 +26,8 @@ class NavBar extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      selectedDropDown: "Options"
     };
   }
 
@@ -36,6 +39,9 @@ class NavBar extends Component {
 
   handleClick = e => {
     this.props.changeSchema(e.currentTarget.getAttribute("value"));
+    this.setState({
+      selectedDropDown: e.currentTarget.getAttribute("name")
+    });
   };
 
   componentDidMount() {
@@ -44,18 +50,34 @@ class NavBar extends Component {
 
   render() {
     return (
-      <Navbar color="light" light expand="md" sticky="top">
-        <NavbarBrand href="/">Seattle Children's</NavbarBrand>
+      <Navbar className="navBar" color="light" light expand="md" sticky="top">
+        <NavbarBrand href="/">
+          <img
+            alt="Seattle Children's logo"
+            height="50px"
+            width="250px"
+            src={logo}
+          />
+        </NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse style={{ height: "100%" }} isOpen={this.state.isOpen} navbar>
-          <Nav className="ml-auto" navbar>
+          <Nav
+            className="mx-auto navBarComponents justify-content-around"
+            navbar
+          >
+            <SearchBar className="searchBar" />
             <UncontrolledDropdown
-              style={{ backgroundColor: "#39809E" }}
+              className="navBarDropdown rounded ml-4"
               nav
               inNavbar
             >
-              <DropdownToggle nav caret>
-                Options
+              <DropdownToggle
+                style={{ marginLeft: "10%" }}
+                className="text-white"
+                nav
+                caret
+              >
+                {this.state.selectedDropDown}
               </DropdownToggle>
               <DropdownMenu right>
                 {this.props.schemas.length
@@ -74,7 +96,6 @@ class NavBar extends Component {
                   : []}
               </DropdownMenu>
             </UncontrolledDropdown>
-            <SearchBar />
           </Nav>
         </Collapse>
       </Navbar>

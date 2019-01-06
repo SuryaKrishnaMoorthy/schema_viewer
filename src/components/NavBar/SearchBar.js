@@ -43,9 +43,12 @@ class SearchBar extends Component {
     const options = this.props.schemas.map(schema => schema);
     return (
       <Fragment>
-        <FormGroup>
+        <FormGroup style={{ width: "70%" }}>
           <InputGroup>
             <Typeahead
+              highlightOnlyResult
+              align="justify"
+              clearButton
               onPaginate={e => console.log("Results paginated")}
               maxResults={5}
               paginationText="View more schemas"
