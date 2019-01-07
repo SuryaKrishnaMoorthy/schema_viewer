@@ -27,7 +27,7 @@ class NavBar extends Component {
     this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false,
-      selectedDropDown: "Options"
+      selectedDropDown: "Select a Schema"
     };
   }
 
@@ -72,11 +72,12 @@ class NavBar extends Component {
               inNavbar
             >
               <DropdownToggle
-                style={{ marginLeft: "10%" }}
+                style={{ float: "right" }}
                 className="text-white"
                 nav
                 caret
               >
+                {/* Select a Schema */}
                 {this.state.selectedDropDown}
               </DropdownToggle>
               <DropdownMenu right>

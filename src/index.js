@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import { Provider } from "react-redux";
+import "font-awesome/css/font-awesome.min.css";
 import store from "./store";
 
 import "./index.css";

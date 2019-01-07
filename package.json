@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.2.1",
+    "font-awesome": "^4.7.0",
     "graphql": "^14.0.2",
     "graphql-voyager": "^1.0.0-rc.26",
     "mobx": "^4.8.0",

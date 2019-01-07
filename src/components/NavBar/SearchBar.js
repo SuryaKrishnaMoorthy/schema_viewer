@@ -2,6 +2,8 @@ import React, { Component, Fragment } from "react";
 import { Typeahead } from "react-bootstrap-typeahead";
 import "react-bootstrap-typeahead/css/Typeahead.css";
 import { FormGroup, InputGroupAddon, InputGroup, Button } from "reactstrap";
+import "font-awesome/css/font-awesome.min.css";
+// import SearchLogo from "../../assets/SearchLogo";
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -63,7 +65,7 @@ class SearchBar extends Component {
                 </div>
               )}
               paginate={paginate}
-              placeholder="Search using keyword"
+              placeholder={`Search using keyword`}
               onChange={this.handleChange}
               onFocus={this.handleFocus}
             />
