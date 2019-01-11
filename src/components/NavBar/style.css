@@ -20,6 +20,20 @@
   min-width: 30%;
   max-height: 10%;
 }
+.dropdown-toggle {
+  justify-content: space-around;
+  display: flex;
+}
 .dropdown-toggle::after {
-  margin-left: 5.255em;
+  margin-top: 0.7rem;
+}
+.dropdown-and-caret {
+  display: inline;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.dropdown-menu {
+  height: 300px;
+  overflow: overlay;
 }

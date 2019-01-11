@@ -71,16 +71,13 @@ class NavBar extends Component {
               nav
               inNavbar
             >
-              <DropdownToggle
-                style={{ float: "right" }}
-                className="text-white"
-                nav
-                caret
-              >
-                {/* Select a Schema */}
-                {this.state.selectedDropDown}
+              <DropdownToggle className="text-white" nav caret>
+                {/* <span>Select a Schema</span> */}
+                <div className="dropdown-and-caret">
+                  {this.state.selectedDropDown}
+                </div>
               </DropdownToggle>
-              <DropdownMenu right>
+              <DropdownMenu className="dropdown-menu" right>
                 {this.props.schemas.length
                   ? this.props.schemas.map((schema, i) => (
                       <DropdownItem
